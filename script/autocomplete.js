@@ -14,7 +14,7 @@ app.directive('autocomplete', function() {
       onSelect: '=onSelect',
       autocompleteRequired: '='
     },
-    controller: ['$scope', function($scope){
+    controller: ['$scope', '$rootScope', function($scope){
       // the index of the suggestions that's currently selected
       $scope.selectedIndex = -1;
 
@@ -29,6 +29,10 @@ app.directive('autocomplete', function() {
         $scope.setIndex(i);
         $scope.$apply();
       };
+
+      $scope.$on('$allmighty-autocomplete-hide', function () {
+        $scope.completing = false;
+      });
 
       $scope.getIndex = function(i){
         return $scope.selectedIndex;
