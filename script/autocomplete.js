@@ -31,7 +31,7 @@ app.directive('autocomplete', function() {
       };
 
       $scope.$on('$allmighty-autocomplete-hide', function () {
-        $scope.completing = false;
+        $scope.select();
       });
 
       $scope.getIndex = function(i){
